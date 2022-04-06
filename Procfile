@@ -1,1 +1,1 @@
-web: gunicorn funcionarios.wsgi --log-file -
+web: gunicorn Agenda.wsgi --log-file -
