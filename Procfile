@@ -1,0 +1,1 @@
+web: gunicorn funcionarios.wsgi --log-file -
