@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    # Incluindo as 'urls' que estão na pasta contatos/template/urls.py
+    # Incluindo as 'urls' que estão na pasta contatos/templates/urls.py
     path('', include('contatos.urls')),
     path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
