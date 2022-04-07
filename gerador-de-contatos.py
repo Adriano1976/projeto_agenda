@@ -23,20 +23,20 @@ sobrenomes = 'Abbott Abernathy Adair Adams Adkins Aguirre Alexander Allen Alliso
              'Fournier Fowler Fox Franklin Fraser Frazier Freeman Frost Fry Fuller Smith'
 
 sobrenomes = sobrenomes.split()
-for i in range(1, 2):
+for i in range(1, 5):
     nome = choice(nomes)
     sobrenome = choice(sobrenomes)
     email = nome + '@gmail.com'
     data_criacao = datetime.now()
     descricao = 'Gerado a partir de um script.'
-    categoria_id = randint(1, 4)  # Supondo que você tem 3 categorias, caso não, só alterar o segundo valor.
+    categoria_id = randint(1, 6)  # Supondo que você tem 3 categorias, caso não, só alterar o segundo valor.
     telefone = str(randint(888888888, 999999999))
     mostrar = randint(0, 1)
-    fotos = False
+    foto = False
 
     print(
         f"INSERT INTO contatos_contato"
         f" (nome, sobrenome, email, data_criacao, descricao, categoria_id, telefone, mostrar, foto)"
         f" VALUES ('{nome}', '{sobrenome}', '{email}', '{data_criacao}', '{descricao}', '{categoria_id}', "
-        f"'{telefone}','{mostrar}','{fotos}');"
+        f"'{telefone}','{mostrar}',{foto});"
     )
