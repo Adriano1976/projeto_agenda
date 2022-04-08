@@ -3,6 +3,10 @@ from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+from django.views.generic import UpdateView
+
+from contatos.models import Contato
 from .models import FormContato
 
 
@@ -101,3 +105,4 @@ def dashboard(request):
         request, f'Contato {request.POST.get("nome")} {request.POST.get("sobrenome")} salvo com sucesso!'
     )
     return redirect('dashboard')
+

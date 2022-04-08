@@ -1,52 +1,47 @@
 <!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
 {% extends 'base.html' %}
 
-<div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
 
-    <!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
-    {% block conteudo %}
-        <h1 class="mt-5">Minha agenda</h1>
+        <!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
+        {% block conteudo %}
 
+            <div class="container mt-5">
+                <h1 class="mt-5">Minha agenda</h1>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Criar Conta</h5>
+                                <p class="card-text">
+                                    Cadastre aqui uma novo <code>Conta</code>.
+                                </p>
+                                <a href="{% url 'register' %}"
+                                   class="btn btn-primary">
+                                    Novo Conta
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Lista de Contato</h5>
+                                <p class="card-text">
+                                    Veja aqui a lista de <code>Contatos</code> cadastrados.
+                                </p>
+                                <a href="{% url 'listar_contato' %}"
+                                   class="btn btn-primary">
+                                    Vá para Lista
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Sobrenome</th>
-                <th>Telefone</th>
-                <th>Categoria</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for contato in contatos %}
-                <tr>
-                    <td>{{ contato.id }}</td>
-                    <!-- modifique aqui ---------------------------->
-                    <td><a href="{% url 'ver_contato' contato.id %}">{{ contato.nome }}</a></td>
-                    <td>{{ contato.sobrenome }}</td>
-                    <td>{{ contato.telefone }}</td>
-                    <td>{{ contato.categoria }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% endblock %}
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                {% for pagina in contatos.paginator.page_range %}
-                    {% if contatos.number == pagina %}
-                        <li class="page-item active">
-                            <a class="page-link" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
-                        </li>
-                    {% else %}
-                        <li class="page-item">
-                            <a class="page-link" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </nav>
-    {% endblock %}
-
-</div>
+    </div>
+</nav>

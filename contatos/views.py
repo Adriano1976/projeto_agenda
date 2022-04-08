@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
+
+
 from .models import Contato
 from django.core.paginator import Paginator
 from django.db.models import Q, Value
@@ -10,8 +12,11 @@ from django.contrib import messages
 # Create your views here.
 # Como exibir nome ao invez da Id na barra de endereços? ------------------------------------
 
-
 def index(request):
+    return render(request, 'contatos/index.html')
+
+
+def listar_contato(request):
     contatos = Contato.objects.order_by('-id').filter(
         mostrar=True
     )
@@ -20,7 +25,7 @@ def index(request):
     page = request.GET.get('p')
     contatos = paginator.get_page(page)
 
-    return render(request, 'contatos/index.html', {
+    return render(request, 'contatos/listar_contato.html', {
         'contatos': contatos
     })
 
@@ -68,3 +73,7 @@ def busca(request):
         contatos = paginator.get_page(page)
 
         return render(request, 'contatos/busca.html', {'contatos': contatos})
+
+
+
+
