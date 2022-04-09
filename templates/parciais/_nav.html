@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <nav class="container">
         <!-- Referenciando o 'index' na pasta contato/template/urls.py -->
-        <a class="navbar-brand" style="font-family: Verdana,sans-serif" href="{% url 'index' %} ">Agenda</a>
+        <a class="navbar-brand" style="font-family: Verdana,sans-serif" href="{% url 'index' %} ">AGENDA</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls=navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,13 +21,13 @@
             <ul class="navbar-nav float-right">
                 <li class="nav-item">
                     <div id="current_date" style="color: white">
-                        <script style="font-family: SansSerif,serif; text-decoration-color: aliceblue">
-                            date = new Date();
-                            year = date.getFullYear();
-                            month = date.getMonth();
-                            day = date.getDay();
-                            document.getElementById("current_date").innerHTML ="Data: " + day + "/" + month + "/" + year;
-                        </script>
+{#                        <script style="font-family: SansSerif,serif; text-decoration-color: aliceblue">#}
+{#                            date = new Date();#}
+{#                            year = date.getFullYear();#}
+{#                            month = date.getMonth();#}
+{#                            day = date.getDay();#}
+{#                            document.getElementById("current_date").innerHTML ="Data: " + day + "/" + month + "/" + year;#}
+{#                        </script>#}
                     </div>
                 </li>
             </ul>
