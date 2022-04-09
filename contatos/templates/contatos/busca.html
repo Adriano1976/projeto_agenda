@@ -1,3 +1,7 @@
 {% extends 'contatos/index.html' %}
+{% load static %}
 
-{% block titulo %}{{ request.GET.termo }} Busca | {% endblock %}
+<nav class="container">
+    {% block titulo %}{{ request.GET.termo }} Busca | {% endblock %}
+</nav>
+

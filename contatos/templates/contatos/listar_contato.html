@@ -1,56 +1,62 @@
 <!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
 {% extends 'base.html' %}
+{% load static %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+
+<!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
+{% block conteudo %}
+
+
+    <h1 class="mt-5" style="font-family: Verdana,serif; text-align: center">Minha Lista</h1>
+
     <div class="container">
-
-        <!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
-        {% block conteudo %}
-            <h1 class="mt-5">Minha agenda</h1>
-
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>Telefone</th>
-                    <th>Categoria</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for contato in contatos %}
-                    <tr>
-                        <td>{{ contato.id }}</td>
-                        <!-- modifique aqui ---------------------------->
-                        <td><a href="{% url 'ver_contato' contato.id %}">{{ contato.nome }}</a></td>
-                        <td>{{ contato.sobrenome }}</td>
-                        <td>{{ contato.telefone }}</td>
-                        <td>{{ contato.categoria }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    {% for pagina in contatos.paginator.page_range %}
-                        {% if contatos.number == pagina %}
-                            <li class="page-item active">
-                                <a class="page-link"
-                                   href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
-                            </li>
-                        {% else %}
-                            <li class="page-item">
-                                <a class="page-link"
-                                   href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </nav>
-
-        {% endblock %}
-
+        <div class="box">
+            <img src="{% static "img/lista-contatos.png" %}"
+                 style="width:100%; height: auto; margin-right: auto; border-radius: 20px; align-items: center"
+                 alt="Minha Agenda">
+        </div>
     </div>
-</nav>
+    <br>
+    <nav class="container mt-5">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Categoria</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for contato in contatos %}
+                <tr>
+                    <!-- modifique aqui ---------------------------->
+                    <td><a href="{% url 'ver_contato' contato.id %}">{{ contato.nome }}</a></td>
+                    <td>{{ contato.sobrenome }}</td>
+                    <td>{{ contato.categoria }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </nav>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% for pagina in contatos.paginator.page_range %}
+                {% if contatos.number == pagina %}
+                    <li class="page-item active">
+                        <a class="page-link"
+                           href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+
+{% endblock %}
+
+

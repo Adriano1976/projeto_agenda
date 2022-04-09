@@ -52,11 +52,25 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
+figure {
+  background-color: #F2EDED;
+  border: 1px solid #CCC;
+  text-align: center;
+  padding: 15px;
+  margin: 30px;
+}
+
+#minha-agenda{
+  margin-left: auto;
+  margin-right: auto;
+  width: 550px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 640;
   line-height: 1.5;
   color: #212529;
   text-align: left;

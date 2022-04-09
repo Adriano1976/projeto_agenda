@@ -1,12 +1,12 @@
+from django.utils import timezone
+from django import template
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
-
-
-from .models import Contato
 from django.core.paginator import Paginator
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
 from django.contrib import messages
+from .models import Contato
 
 
 # Create your views here.
@@ -73,7 +73,3 @@ def busca(request):
         contatos = paginator.get_page(page)
 
         return render(request, 'contatos/busca.html', {'contatos': contatos})
-
-
-
-

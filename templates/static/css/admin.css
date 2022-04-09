@@ -30,7 +30,7 @@ a:link, a:visited {
 }
 
 div.breadcrumbs {
-    background: ##8C1717;
+    background: #8C1717;
     color: #FFFFFF;
 }
 
@@ -98,4 +98,12 @@ a.active.selector-clearall:focus,
 a.active.selector-chooseall:hover,
 a.active.selector-clearall:hover {
     color: #8C1717 !important;
+}
+
+figure {
+  background-color: #F2EDED;
+  border: 1px solid #CCC;
+  text-align: center;
+  padding: 15px;
+  margin: 30px;
 }
