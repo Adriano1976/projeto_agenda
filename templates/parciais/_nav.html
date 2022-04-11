@@ -1,3 +1,5 @@
+{% load tempo_atual %}
+
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <nav class="container">
@@ -20,15 +22,12 @@
             </ul>
             <ul class="navbar-nav float-right">
                 <li class="nav-item">
-                    <div id="current_date" style="color: white">
-{#                        <script style="font-family: SansSerif,serif; text-decoration-color: aliceblue">#}
-{#                            date = new Date();#}
-{#                            year = date.getFullYear();#}
-{#                            month = date.getMonth();#}
-{#                            day = date.getDay();#}
-{#                            document.getElementById("current_date").innerHTML ="Data: " + day + "/" + month + "/" + year;#}
-{#                        </script>#}
-                    </div>
+                    <!-- Referente a tag 'tempo_atual.py da pasta templatetags'-->
+                    <a class="nav-link" href="#">
+                        <b>Data: </b>{% data_atual %}<br>
+                        <b>Hora: </b>{% tempo_atual %}<br>
+
+                    </a>
                 </li>
             </ul>
         </div>
