@@ -19,9 +19,24 @@
                         <p class="card-text">
                             Cadastre aqui uma novo <code>Conta</code>.
                         </p>
-                        <a href="{% url 'register' %}"
+                        <a href="{% url 'accounts:register' %}"
                            class="btn btn-primary">
                             Novo Conta
+                        </a>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Criar Contato</h5>
+                        <p class="card-text">
+                            Cadastre aqui um novo <code>Contato</code>.
+                        </p>
+                        <a href="{% url 'accounts:register_contact' %}"
+                           class="btn btn-primary">
+                            Vá para Lista
                         </a>
                     </div>
                 </div>
@@ -34,7 +49,7 @@
                         <p class="card-text">
                             Veja aqui a lista de <code>Contatos</code> cadastrados.
                         </p>
-                        <a href="{% url 'listar_contato' %}"
+                        <a href="{% url 'contatos:listar_contato' %}"
                            class="btn btn-primary">
                             Vá para Lista
                         </a>

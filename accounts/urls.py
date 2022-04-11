@@ -1,5 +1,8 @@
 from django.urls import path
 from . import views
+from .views import ContatoCreateView
+
+app_name = 'accounts'
 
 urlpatterns = [
     # /accounts/index_login
@@ -12,10 +15,11 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     # /accounts/dashboard/
     path('dashboard/', views.dashboard, name='dashboard'),
-    # /accounts/dashboard/
+    # /accounts/update/
+    path('<int:contato_id>', views.update, name='update'),
 
-
-
+    # GET /accounts/register/
+    path('accounts/register_contact', ContatoCreateView.as_view(), name="register_contact"),
 
     # ATENçÃO: --- ↑ - Não esquecer da barra!!!
     # Lembre-se que no: djAgPy\agenda\Contatos\urls.py

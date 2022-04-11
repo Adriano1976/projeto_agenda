@@ -7,15 +7,8 @@
 {% block conteudo %}
 
 
-    <h1 class="mt-5" style="font-family: Verdana,serif; text-align: center">Minha Lista</h1>
+    <h1 class="mt-5" style="font-family: Verdana,serif; text-align: center">Lista de Contatos</h1>
 
-    <div class="container">
-        <div class="box">
-            <img src="{% static "img/lista-contatos.png" %}"
-                 style="width:90%; height: auto; margin-right: auto; border-radius: 20px; align-items: center"
-                 alt="Minha Agenda">
-        </div>
-    </div>
     <br>
     <nav class="container mt-5">
         <table class="table">
@@ -30,7 +23,7 @@
             {% for contato in contatos %}
                 <tr>
                     <!-- modifique aqui ---------------------------->
-                    <td><a href="{% url 'ver_contato' contato.id %}">{{ contato.nome }}</a></td>
+                    <td><a href="{% url 'contatos:ver_contato' contato.id %}">{{ contato.nome }}</a></td>
                     <td>{{ contato.sobrenome }}</td>
                     <td>{{ contato.categoria }}</td>
                 </tr>

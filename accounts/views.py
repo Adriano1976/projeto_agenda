@@ -1,13 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView
+from django.views.generic import CreateView
 
-from contatos.models import Contato
-from .models import FormContato
+from .models import Contato, FormContato
+from contatos.forms import InsereContatoForm
+
+app_name = 'accounts'
 
 
 def login(request):
@@ -106,3 +108,30 @@ def dashboard(request):
     )
     return redirect('dashboard')
 
+
+@login_required(redirect_field_name='login')
+def update(request):
+    if request.method == 'POST':
+        form = FormContato(request.POST)
+
+        if form.is_valid():
+            data_form = form.cleaned_data
+            # Obtendo o conteúdo de um Post digitado no formulário e salvando no post
+            Contato.objects.create(content=data_form['content'], user=request.user)
+
+            return redirect('listar_contato')
+        else:
+            return redirect('listar_contato')
+
+    else:
+        return redirect('listar_contato')
+
+
+# CADASTRAMENTO DE FUNCIONÁRIOS
+# ----------------------------------------------
+
+class ContatoCreateView(CreateView):
+    template_name = "accounts/register_contact.html"
+    model = FormContato
+    form_class = InsereContatoForm
+    success_url = reverse_lazy("contatos:index")
