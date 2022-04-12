@@ -1,16 +1,19 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 from .models import Contato, FormContato
-from contatos.forms import InsereContatoForm
+from accounts.forms import InsereContatoForm
 
 app_name = 'accounts'
 
+
+# FAZENDO LOGIN DOS USUÁRIOS USANDO "FUNCTION BASED VIEWS"
+# ------------------------------------------------------------------------------------
 
 def login(request):
     if request.method != 'POST':
@@ -27,12 +30,19 @@ def login(request):
     else:
         auth.login(request, user)
         messages.success(request, 'Você fez login com sucesso.')
-        return redirect('dashboard')
+        return redirect('contatos:index')
 
+
+# FAZENDO LOGOUT DOS USUÁRIOS USANDO "FUNCTION BASED VIEWS"
+# ------------------------------------------------------------------------------------
 
 def logout(request):
     auth.logout(request)
-    return redirect('index')
+    return redirect('accounts:login')
+
+
+# CADASTRANDO OS USUÁRIOS USANDO "FUNCTION BASED VIEWS"
+# ------------------------------------------------------------------------------------
 
 
 def register(request):
@@ -81,7 +91,11 @@ def register(request):
     user = User.objects.create_user(username=usuario, email=email, password=senha, first_name=nome,
                                     last_name=sobrenome)
     user.save()
-    return redirect('login')
+    return redirect('accounts:login')
+
+
+# CADASTRANDO OS CONTATOS USANDO "FUNCTION BASED VIEWS"
+# ------------------------------------------------------------------------------------
 
 
 @login_required(redirect_field_name='login')
@@ -109,29 +123,37 @@ def dashboard(request):
     return redirect('dashboard')
 
 
-@login_required(redirect_field_name='login')
-def update(request):
-    if request.method == 'POST':
-        form = FormContato(request.POST)
+# CADASTRANDO OS CONTATOS USANDO "CLASS BASED VIEWS"
+# ------------------------------------------------------------------------------------
 
-        if form.is_valid():
-            data_form = form.cleaned_data
-            # Obtendo o conteúdo de um Post digitado no formulário e salvando no post
-            Contato.objects.create(content=data_form['content'], user=request.user)
-
-            return redirect('listar_contato')
-        else:
-            return redirect('listar_contato')
-
-    else:
-        return redirect('listar_contato')
-
-
-# CADASTRAMENTO DE FUNCIONÁRIOS
-# ----------------------------------------------
 
 class ContatoCreateView(CreateView):
+    login_required(redirect_field_name='login')
     template_name = "accounts/register_contact.html"
-    model = FormContato
+    model = Contato
     form_class = InsereContatoForm
-    success_url = reverse_lazy("contatos:index")
+    success_url = reverse_lazy("contatos:listar_contato")
+
+
+# ATUALIZANDO OS CONTATOS USANDO "CLASS BASED VIEWS"
+# ------------------------------------------------------------------------------------
+
+class ContatoUpdateView(UpdateView):
+    login_required(redirect_field_name='login')
+    template_name = "accounts/update_contact.html"
+    model = Contato
+    fields = '__all__'
+    context_object_name = 'contato'
+    success_url = reverse_lazy("contatos:listar_contato")
+
+
+# APAGANDO OS CONTATOS USANDO "CLASS BASED VIEWS"
+# ------------------------------------------------------------------------------------
+
+
+class ContatoDeleteView(DeleteView):
+    login_required(redirect_field_name='login')
+    template_name = "accounts/delete_contact.html"
+    model = Contato
+    context_object_name = 'contato'
+    success_url = reverse_lazy("contatos:listar_contato")

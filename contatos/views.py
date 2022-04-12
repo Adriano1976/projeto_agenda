@@ -17,7 +17,7 @@ def index(request):
 
 
 def listar_contato(request):
-    contatos = Contato.objects.order_by('-id').filter(
+    contatos = Contato.objects.order_by('nome').filter(
         mostrar=True
     )
     paginator = Paginator(contatos, 20)

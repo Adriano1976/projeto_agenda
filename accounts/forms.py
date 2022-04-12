@@ -1,3 +1,7 @@
+from django.contrib import messages
+from django.core.validators import validate_email
+from django.shortcuts import render
+
 from contatos.models import Contato, Categoria
 from django import forms
 
@@ -6,7 +10,6 @@ from django import forms
 # -------------------------------------------
 
 class InsereContatoForm(forms.ModelForm):
-
     chefe = forms.BooleanField(
         label='Chefe?',
         required=False,
@@ -30,5 +33,5 @@ class InsereContatoForm(forms.ModelForm):
             'email',
             'data_criacao',
             'descricao',
-            'categoria'
+            'categoria',
         ]

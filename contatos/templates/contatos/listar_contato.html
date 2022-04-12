@@ -1,11 +1,10 @@
 <!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
 {% extends 'base.html' %}
-{% load static %}
 
+{% load static %}
 
 <!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
 {% block conteudo %}
-
 
     <h1 class="mt-5" style="font-family: Verdana,serif; text-align: center">Lista de Contatos</h1>
 
@@ -33,6 +32,7 @@
     </nav>
 
     <nav aria-label="Page navigation example">
+        <hr>
         <ul class="pagination">
             {% for pagina in contatos.paginator.page_range %}
                 {% if contatos.number == pagina %}
@@ -49,6 +49,7 @@
             {% endfor %}
         </ul>
     </nav>
+    <br>
 
 {% endblock %}
 
