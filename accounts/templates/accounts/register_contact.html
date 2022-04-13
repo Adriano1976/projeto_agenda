@@ -26,7 +26,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Nome</span>
                                 </div>
-                                {% render_field form.nome class+="form-control" placeholder="Digite o nome" %}
+                                {% render_field form.nome class+="form-control" placeholder="Informe seu nome" %}
                             </div>
 
                             <!-- Sobrenome do contato -->
@@ -34,7 +34,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Sobrenome</span>
                                 </div>
-                                {% render_field form.sobrenome class+="form-control" placeholder="Digite o sobrenome" %}
+                                {% render_field form.sobrenome class+="form-control" type='name' placeholder="Informe seu sobrenome" %}
                             </div>
 
                             <!-- Telefone do contato -->
@@ -42,7 +42,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Telefone</span>
                                 </div>
-                                {% render_field form.telefone class+="form-control" placeholder="Digite o telefone" %}
+                                {% render_field form.telefone class+="form-control" type='tel' placeholder="(XX)XXXXX-XXXX" %}
                             </div>
 
                             <!-- E-mail do contato -->
@@ -50,7 +50,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">E-mail</span>
                                 </div>
-                                {% render_field form.email class+="form-control" placeholder="Digite o e-mail" %}
+                                {% render_field form.email class+="form-control" type='email' placeholder="Informe seu e-mail" %}
                             </div>
 
                             <!-- Data de criação do contato -->
@@ -70,15 +70,16 @@
                             <!-- Descrição do contato -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Descrição</span>
+                                    <span class="input-group-text">Nota</span><br>
                                 </div>
-                                {% render_field form.descricao class+="form-control" placeholder="Digite a descrição" %}
+                                {% render_field form.descricao class+="form-control" placeholder="Anotações" %}
                             </div>
                             <hr>
                             <div class="text-right">
                                 <a href="{% url 'contatos:index' %}"
                                    class="btn btn-outline-primary">Voltar</a>
-                                <button class="btn btn-primary">Salvar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                                <button  type="reset" class="btn btn-outline-primary">Limpar</button>
                             </div>
                         </form>
                     </div>

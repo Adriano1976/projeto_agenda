@@ -1,7 +1,3 @@
-from django.contrib import messages
-from django.core.validators import validate_email
-from django.shortcuts import render
-
 from contatos.models import Contato, Categoria
 from django import forms
 
