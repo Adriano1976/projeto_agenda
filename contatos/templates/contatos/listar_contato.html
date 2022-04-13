@@ -1,0 +1,56 @@
+<!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
+{% extends 'base.html' %}
+
+{% load static %}
+
+<!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
+{% block conteudo %}
+
+    <h1 class="mt-5" style="font-family: Verdana,serif; text-align: center">Lista de Contatos</h1>
+
+    <br>
+    <nav class="container mt-5">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Categoria</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for contato in contatos %}
+                <tr>
+                    <!-- modifique aqui ---------------------------->
+                    <td><a href="{% url 'contatos:ver_contato' contato.id %}">{{ contato.nome }}</a></td>
+                    <td>{{ contato.sobrenome }}</td>
+                    <td>{{ contato.categoria }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </nav>
+
+    <nav aria-label="Page navigation example">
+        <hr>
+        <ul class="pagination">
+            {% for pagina in contatos.paginator.page_range %}
+                {% if contatos.number == pagina %}
+                    <li class="page-item active">
+                        <a class="page-link"
+                           href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    <br>
+
+{% endblock %}
+
+

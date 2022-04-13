@@ -1,0 +1,7 @@
+{% extends 'contatos/listar_contato.html' %}
+{% load static %}
+
+<nav class="container">
+    {% block titulo %}{{ request.GET.termo }} Busca | {% endblock %}
+</nav>
+

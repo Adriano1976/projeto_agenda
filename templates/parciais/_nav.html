@@ -1,0 +1,39 @@
+{% load tempo_atual %}
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <nav class="container">
+        <!-- Referenciando o 'index' na pasta contato/template/urls.py -->
+        <a class="navbar-brand" style="font-family: Verdana,sans-serif" href="{% url 'contatos:index' %} ">AGENDA</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls=navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'contatos:index' %}">Página Inicial</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contatos:listar_contato' %}">Lista de Contatos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:index_login' %}">Login</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav float-right">
+                <li class="nav-item">
+                    <!-- Referente a tag 'tempo_atual.py da pasta templatetags'-->
+                    <a class="nav-link" href="#">
+                        <b>Data: </b>{% data_atual %}<br>
+                        <b>Hora: </b>{% tempo_atual %}<br>
+
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</nav>
