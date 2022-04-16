@@ -43,6 +43,15 @@ INSTALLED_APPS = [
     'contatos.apps.ContatosConfig',
 ]
 
+# Configurações de envio do e-mail
+
+EMAIL_BACKEND: str = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.live.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "adrianosantos.git@hotmail.com"
+EMAIL_HOST_PASSWORD = "2510aS#@"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

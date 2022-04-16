@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block conteudo %}
+    <div class="container mt-5">
+    {% include 'parciais/_messages.html' %}
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Informação do Usuário</h5>
+                        <p class="card-text">
+                            Veja abaixo as descrições
+                            de sua <code>Credencial</code>.
+                        </p>
+
+                        <h1 class="mt-5"> {{ usuario.get_username }}</h1>
+
+                         <dl>
+                            <dt>Código:</dt>
+                            <dd>{{ usuario.id }}</dd>
+
+                            <dt>Telefone:</dt>
+                            <dd>{{ usuario.nome }}</dd>
+
+                            <dt>E-mail:</dt>
+                            <dd>{{ usuario.email }}</dd>
+
+                            <dt>Categoria:</dt>
+                            <dd>{{ usuario.senha }}</dd>
+                        </dl>
+                        <hr>
+
+{#                        <td class="text-center">#}
+{#                            <a href="{% url 'accounts:update_contact' pk=contato.id %}"#}
+{#                               class="btn btn-primary">#}
+{#                                Atualizar#}
+{#                            </a>#}
+{#                            <a href="{% url 'accounts:delete_contact' pk=contato.id %}"#}
+{#                               class="btn btn-danger">#}
+{#                                Excluir#}
+{#                            </a>#}
+{#                        </td>#}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+{% endblock %}

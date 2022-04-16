@@ -5,6 +5,7 @@ from django.db.models import Q, Value
 from django.db.models.functions import Concat
 from django.contrib import messages
 from .models import Contato
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -36,6 +37,17 @@ def ver_contato(request, contato_id):
 
     return render(request, 'contatos/ver_contato.html', {
         'contato': contato
+    })
+
+
+def ver_usuario(request, usuario_id):
+    usuario = get_object_or_404(User, id=usuario_id)
+
+    if not User:
+        raise Http404()
+
+    return render(request, 'contatos/ver_usuario.html', {
+        'usuario': usuario
     })
 
 

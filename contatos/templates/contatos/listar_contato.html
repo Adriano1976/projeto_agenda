@@ -1,6 +1,5 @@
 <!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
 {% extends 'base.html' %}
-
 {% load static %}
 
 <!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
@@ -10,6 +9,7 @@
 
     <br>
     <nav class="container mt-5">
+     {% include 'parciais/_messages.html' %}
         <table class="table">
             <thead>
             <tr>
@@ -22,7 +22,7 @@
             {% for contato in contatos %}
                 <tr>
                     <!-- modifique aqui ---------------------------->
-                    <td><a href="{% url 'contatos:ver_contato' contato.id %}">{{ contato.nome }}</a></td>
+                    <td><a href="{% url 'contatos:ver_contato_id' contato.id %}">{{ contato.nome }}</a></td>
                     <td>{{ contato.sobrenome }}</td>
                     <td>{{ contato.categoria }}</td>
                 </tr>

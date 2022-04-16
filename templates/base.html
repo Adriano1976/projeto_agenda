@@ -20,6 +20,7 @@
 {% include 'parciais/_nav.html' %}
 
 <div class="container">
+    {% include 'parciais/_messages.html' %}
     <div class="row">
         <div class="col-lg-12">
             {% if 'accounts' not in request.path %}
@@ -33,11 +34,10 @@
                                        id="search-input"
                                        placeholder="Digite sua pesquisa"
                                        name="termo">
-
                             </label>
-
-
-                            {% include 'parciais/_messages.html' %}
+                            <img src="{% static "img/lupa.png" %}"
+                                 style="width:35px; margin-right: auto"
+                                 alt="Minha Agenda">
                         </div>
                     </div>
                 </form>
