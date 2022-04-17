@@ -1,7 +1,12 @@
+<!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
 {% extends 'base.html' %}
 
 {% load widget_tweaks %}
 
+<!-- Bloco que define o <title>,/title> da nossa página --------------------------------->
+{% block titulo %}Vendo Usuário | {% endblock %}
+
+<!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
 {% block conteudo %}
     <div class="container mt-5">
     {% include 'parciais/_messages.html' %}
