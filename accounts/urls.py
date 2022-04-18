@@ -1,7 +1,6 @@
-from django.conf.urls import url
-from django.urls import path, include
-from django.contrib.auth import views as auth_views
-from .views import ContatoCreateView, ContatoUpdateView, ContatoDeleteView
+from django.urls import path
+from .views import ContatoCreateView, ContatoUpdateView, ContatoDeleteView, UsuarioPasswordResetView, \
+    UsuarioPasswordResetDoneView, UsuarioPasswordResetConfirmView, UsuarioPasswordResetCompleteView
 from accounts import views
 
 app_name = 'accounts'
@@ -17,8 +16,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     # /accounts/dashboard/
     path('dashboard/', views.dashboard, name='dashboard'),
-    # /accounts/recover/
-    path('recover/', views.recover, name='recover'),
 
     # GET /accounts/register_contatct/
     path('register_contact/', ContatoCreateView.as_view(), name="register_contact"),
@@ -27,10 +24,10 @@ urlpatterns = [
     # GET /POST/contato/delete/{pk}
     path('contato/delete/<pk>', ContatoDeleteView.as_view(), name="delete_contact"),
 
-    path('reset_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),
-    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
-    path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
-    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
+    path('reset_password/', UsuarioPasswordResetView.as_view(), name="password_reset"),
+    path('reset_password_sent/', UsuarioPasswordResetDoneView.as_view(), name="password_reset_done"),
+    path('reset/<uidb64>/<token>', UsuarioPasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path('reset_password_complete/', UsuarioPasswordResetCompleteView.as_view(), name="password_reset_complete"),
 
     # ATENçÃO: --- ↑ - Não esquecer da barra!!!
     # Lembre-se que no: djAgPy\agenda\Contatos\urls.py

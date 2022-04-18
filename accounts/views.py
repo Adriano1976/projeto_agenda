@@ -1,11 +1,13 @@
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 from django.contrib.auth.models import User
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
+    PasswordResetCompleteView
 from django.core.validators import validate_email
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
-
 from accounts.forms import InsereContatoForm
 from .models import Contato, FormContato
 
@@ -31,27 +33,6 @@ def login(request):
         auth.login(request, user)
         messages.success(request, 'Você fez login com sucesso.')
         return redirect('contatos:index')
-
-
-# RECUPERANDO SENHA DO USUÁRIO USANDO "FUNCTION BASED VIEWS"
-# ------------------------------------------------------------------------------------
-
-def recover(request):
-    if request.method != 'POST':
-        return render(request, 'accounts/recover.html')
-
-    usuario = request.POST.get('usuario')
-    email = request.POST.get('email')
-
-    user = auth.authenticate(request, email=email, username=usuario)
-
-    if not user:
-        messages.error(request, 'Usuário ou email inexistente')
-        return render(request, 'accounts/recover.html')
-    else:
-        auth.authenticate(render, user)
-        messages.success(request, 'Conta recuperada com sucesso')
-        return redirect('contatos:ver_usuario')
 
 
 # FAZENDO LOGOUT DOS USUÁRIOS USANDO "FUNCTION BASED VIEWS"
@@ -174,3 +155,29 @@ class ContatoDeleteView(DeleteView):
     model = Contato
     context_object_name = 'contato'
     success_url = reverse_lazy("contatos:listar_contato")
+
+
+# RESETANDO A SENHA DO USUÁRIO USANDO "CLASS BASED VIEWS"
+# ------------------------------------------------------------------------------------
+
+class UsuarioPasswordResetView(PasswordResetView):
+    email_template_name = 'registrations/password_reset_email.html'
+    form_class = PasswordResetForm
+    subject_template_name = 'registrations/password_reset_subject.txt'
+    success_url = reverse_lazy('accounts:password_reset_done')
+    template_name = 'registrations/password_reset_form.html'
+    context_object_name = 'password_reset'
+
+
+class UsuarioPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'registrations/password_reset_done.html'
+
+
+class UsuarioPasswordResetConfirmView(PasswordResetConfirmView):
+    form_class = SetPasswordForm
+    success_url = reverse_lazy('accounts:password_reset_complete')
+    template_name = 'registrations/password_reset_confirm.html'
+
+
+class UsuarioPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = 'registrations/password_reset_complete.html'

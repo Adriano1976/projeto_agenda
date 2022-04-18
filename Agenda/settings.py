@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 # Configurações de envio do e-mail
 
-EMAIL_BACKEND: str = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.live.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
