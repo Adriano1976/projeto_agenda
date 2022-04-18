@@ -43,6 +43,17 @@ INSTALLED_APPS = [
     'contatos.apps.ContatosConfig',
 ]
 
+# Configurações de envio do e-mail
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "agenda_app"
+EMAIL_HOST_PASSWORD = "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"
+
+SESSION_COOKIE_AGE = 900
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -1,18 +1,29 @@
-<!-- Estendemos do template base -->
+<!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
 {% extends "base.html" %}
 
-<!-- Bloco que define o <title></title> da nossa página -->
-{% block title %}Página Inicial{% endblock %}
+{% load static %}
 
-<!-- Bloco de conteúdo da nossa página -->
+<!-- Bloco que define o <title></title> da nossa página -->
+{% block titulo %}Excluindo Contato | {% endblock %}
+
+<!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
 {% block conteudo %}
+    {% include 'parciais/_messages.html' %}
+
     <div class="container mt-5">
-        {% include 'parciais/_messages.html' %}
+        <img src="{% static "img/titulo.png" %}"
+             style="width:250px; margin-right: auto"
+             alt="Minha Agenda">
+    </div>
+    <br>
+
+    <div class="container mt-5">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Exclusão de Contato</h5>
 
                 <p class="card-text">
+                    Olá usuáro(a) "{{ user }}".
                     Você tem certeza que quer excluir o contato <b>{{ contato.nome }}</b>?
                 </p>
 
@@ -20,8 +31,11 @@
                     {% csrf_token %}
 
                     <hr/>
+                    <br>
+
                     <div class="text-right">
-                        <a href="{% url 'contatos:listar_contato' %}" class="btn btn-outline-danger">
+                        <a href="{% url 'contatos:listar_contato' %}"
+                           class="btn btn-outline-danger">
                             Cancelar
                         </a>
                         <button class="btn btn-danger">Excluir</button>
@@ -30,4 +44,6 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
 {% endblock %}

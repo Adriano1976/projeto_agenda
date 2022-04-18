@@ -1,12 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
 <!-- Inicializando os Bootstrap core JavaScript que estão na tag 'script' abaixo -->
 {% load static %}
 
-<html lang="pt-br">
-
 <head>
-    <!-- Incluindo o '_head.html' que está na pasta template/parciais ------------->
-    {% include 'parciais/_head.html' %}
     <title>{% block titulo %} {% endblock %}Agenda</title>
+
+    <!-- Incluindo o '_head.html' que está na pasta template/parciais -------------->
+    {% include 'parciais/_head.html' %}
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/png">
@@ -16,10 +18,11 @@
 
 <!-- Page Content -->
 
-<!-- Importando conteúdo do arquivo '_nav.html' da pasta template/parciais/ ------->
+<!-- Importando conteúdo do arquivo '_nav.html' da pasta template/parciais/ ---------->
 {% include 'parciais/_nav.html' %}
 
 <div class="container">
+    {% include 'parciais/_messages.html' %}
     <div class="row">
         <div class="col-lg-12">
             {% if 'accounts' not in request.path %}
@@ -33,11 +36,10 @@
                                        id="search-input"
                                        placeholder="Digite sua pesquisa"
                                        name="termo">
-
                             </label>
-
-
-                            {% include 'parciais/_messages.html' %}
+                            <img src="{% static "img/lupa.png" %}"
+                                 style="width:35px; margin-right: auto"
+                                 alt="Minha Agenda">
                         </div>
                     </div>
                 </form>
@@ -55,7 +57,7 @@
 </body>
 
 <footer>
-    <!-- Incluindo o '_footer.html' que está na pasta template/parciais ------------->
+    <!-- Incluindo o '_footer.html' que está na pasta template/parciais ------------------------------>
     {% include 'parciais/_footer.html' %}
 </footer>
 

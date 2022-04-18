@@ -1,25 +1,25 @@
+<!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
 {% extends 'base.html' %}
 
 {% load widget_tweaks %}
 
-{% block titulo %}Cadastro | {% endblock %}
+<!-- Bloco que define o <title>,/title> da nossa página --------------------------------->
+{% block titulo %}Cadastro de Usuário | {% endblock %}
 
+<!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
 {% block conteudo %}
     <div class="container mt-5">
-        <p>
-            O seu nome de usuário é {{ user }}.
-        </p>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Cadastro de Usuário</h5>
                         <p class="card-text">
+                            Olá usuáro(a) "{{ user }}".
                             Complete o formulário abaixo para cadastrar
                             um novo <code>Usuário</code>
                         </p>
                         <form method="POST" action="{% url 'accounts:register' %}">
-                            {% include 'parciais/_messages.html' %}
                             <!-- Não se esqueça dessa tag -->
                             {% csrf_token %}
 
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
 
-                            <!-- E-mail do usuario -->
+                            <!-- Endereço eletrónico do usuario -->
                             <div class="form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">E-mail</span>
@@ -84,7 +84,7 @@
                                 <a href="{% url 'contatos:index' %}"
                                    class="btn btn-outline-primary">Voltar</a>
                                 <button type="submit" class="btn btn-primary">Salvar</button>
-                                <button  type="reset" class="btn btn-outline-primary">Limpar</button>
+                                <button type="reset" class="btn btn-outline-primary">Limpar</button>
                             </div>
                         </form>
                     </div>
@@ -92,5 +92,6 @@
             </div>
         </div>
     </div>
+    <br>
     <br>
 {% endblock %}

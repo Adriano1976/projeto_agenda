@@ -1,11 +1,15 @@
 <!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
 {% extends 'base.html' %}
+
 {% load static %}
+
+<!-- Bloco que define o <title>,/title> da nossa página --------------------------------->
+{% block titulo %}Página Inicial | {% endblock %}
 
 <!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
 {% block conteudo %}
-
     <div class="container mt-5">
+
         <img src="{% static "img/titulo.png" %}"
              style="width:250px; margin-right: auto"
              alt="Minha Agenda">
@@ -13,21 +17,6 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Adicionar Usuário</h5>
-                        <p class="card-text">
-                            Cadastre aqui um novo <code>Usuário</code>.
-                        </p>
-                        <a href="{% url 'accounts:register' %}"
-                           class="btn btn-primary">
-                            Novo Usuário
-                        </a>
-                    </div>
-                </div>
-                <br>
-            </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="card">
                     <div class="card-body">
