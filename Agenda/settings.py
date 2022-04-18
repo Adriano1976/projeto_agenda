@@ -46,11 +46,13 @@ INSTALLED_APPS = [
 # Configurações de envio do e-mail
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.live.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "adrianosantos.git@hotmail.com"
-EMAIL_HOST_PASSWORD = "2510aS#@"
+EMAIL_HOST_USER = "agenda_app"
+EMAIL_HOST_PASSWORD = "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"
+
+SESSION_COOKIE_AGE = 900
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

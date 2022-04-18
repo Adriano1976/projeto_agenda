@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 from django.core.paginator import Paginator
@@ -11,10 +12,12 @@ from django.contrib.auth.models import User
 # Create your views here.
 # Como exibir nome ao invez da Id na barra de endereços? ------------------------------------
 
+@login_required(redirect_field_name='login')
 def index(request):
     return render(request, 'contatos/index.html')
 
 
+@login_required(redirect_field_name='login')
 def listar_contato(request):
     contatos = Contato.objects.order_by('nome').filter(
         mostrar=True
@@ -29,6 +32,7 @@ def listar_contato(request):
     })
 
 
+@login_required(redirect_field_name='login')
 def ver_contato(request, contato_id):
     contato = get_object_or_404(Contato, id=contato_id)  # modifique aqui -------------------
 
@@ -40,17 +44,7 @@ def ver_contato(request, contato_id):
     })
 
 
-def ver_usuario(request, usuario_id):
-    usuario = get_object_or_404(User, id=usuario_id)
-
-    if not User:
-        raise Http404()
-
-    return render(request, 'contatos/ver_usuario.html', {
-        'usuario': usuario
-    })
-
-
+@login_required(redirect_field_name='login')
 def busca(request):
     termo = request.GET.get('termo')
     campos = Concat('nome', Value(' '), 'sobrenome')

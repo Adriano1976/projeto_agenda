@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import ContatoCreateView, ContatoUpdateView, ContatoDeleteView, UsuarioPasswordResetView, \
     UsuarioPasswordResetDoneView, UsuarioPasswordResetConfirmView, UsuarioPasswordResetCompleteView
+
 from accounts import views
 
 app_name = 'accounts'

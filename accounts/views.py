@@ -181,3 +181,4 @@ class UsuarioPasswordResetConfirmView(PasswordResetConfirmView):
 
 class UsuarioPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'registrations/password_reset_complete.html'
+
