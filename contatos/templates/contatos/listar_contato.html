@@ -15,28 +15,28 @@
         </div>
 
         {% if contatos|length > 0 %}
-                <nav class="container mt-3">
-                    <table class="table">
-                        <thead class="thead-dark">
-                        <tr>
-                            <th>Nome</th>
-                            <th>Sobrenome</th>
-                            <th>Categoria</th>
-                        </tr>
-                        </thead>
+            <nav class="container mt-3">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>Categoria</th>
+                    </tr>
+                    </thead>
 
-                        <tbody>
-                        {% for contato in contatos %}
-                            <tr>
-                                <!-- modifique aqui ---------------------------->
-                                <td><a href="{% url 'contatos:ver_contato_id' contato.id %}">{{ contato.nome }}</a></td>
-                                <td>{{ contato.sobrenome }}</td>
-                                <td>{{ contato.categoria }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </nav>
+                    <tbody>
+                    {% for contato in contatos %}
+                        <tr>
+                            <!-- modifique aqui ---------------------------->
+                            <td><a href="{% url 'contatos:ver_contato_id' contato.id %}">{{ contato.nome }}</a></td>
+                            <td>{{ contato.sobrenome }}</td>
+                            <td>{{ contato.categoria }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </nav>
         {% else %}
             <div class="text-center mt-5 mb-5 jumbotron">
                 <h5>Nenhum <code>Contato</code> cadastrado ainda.</h5>

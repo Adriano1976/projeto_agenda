@@ -5,9 +5,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
     PasswordResetCompleteView
 from django.core.validators import validate_email
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
+
 from accounts.forms import InsereContatoForm
 from .models import Contato, FormContato
 
@@ -127,20 +129,32 @@ def dashboard(request):
 # ------------------------------------------------------------------------------------
 
 class ContatoCreateView(CreateView):
-    login_required(redirect_field_name='login')
     template_name = "accounts/register_contact.html"
     model = Contato
     form_class = InsereContatoForm
     success_url = reverse_lazy("contatos:listar_contato")
+
+    # Criando uma chave em kwargs para o usario que deverá ser "capturado" através do request.
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.usuario = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    # Criando a chave usuario em kwargs
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super(ContatoCreateView, self).get_form_kwargs()
+        kwargs['usuario'] = self.request.user
+        return kwargs
 
 
 # ATUALIZANDO OS CONTATOS USANDO "CLASS BASED VIEWS"
 # ------------------------------------------------------------------------------------
 
 class ContatoUpdateView(UpdateView):
-    login_required(redirect_field_name='login')
     template_name = "accounts/update_contact.html"
     model = Contato
+    user = User
     fields = '__all__'
     context_object_name = 'contato'
     success_url = reverse_lazy("contatos:listar_contato")
@@ -150,7 +164,6 @@ class ContatoUpdateView(UpdateView):
 # ------------------------------------------------------------------------------------
 
 class ContatoDeleteView(DeleteView):
-    login_required(redirect_field_name='login')
     template_name = "accounts/delete_contact.html"
     model = Contato
     context_object_name = 'contato'
@@ -161,7 +174,7 @@ class ContatoDeleteView(DeleteView):
 # ------------------------------------------------------------------------------------
 
 class UsuarioPasswordResetView(PasswordResetView):
-    email_template_name = 'registrations/password_reset_email.html'
+    email_template_name = 'registrations/password_reset_email.txt'
     form_class = PasswordResetForm
     subject_template_name = 'registrations/password_reset_subject.txt'
     success_url = reverse_lazy('accounts:password_reset_done')
@@ -181,4 +194,3 @@ class UsuarioPasswordResetConfirmView(PasswordResetConfirmView):
 
 class UsuarioPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'registrations/password_reset_complete.html'
-

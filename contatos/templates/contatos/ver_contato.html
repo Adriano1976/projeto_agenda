@@ -50,10 +50,15 @@
 
                             <dt>Descrição:</dt>
                             <dd>{{ contato.descricao }}</dd>
+
                         </dl>
                         <hr>
 
                         <td class="text-center">
+                            <a href="{% url 'contatos:listar_contato' %}"
+                                   class="btn btn-outline-primary">
+                                Voltar
+                            </a>
                             <a href="{% url 'accounts:update_contact' pk=contato.id %}"
                                class="btn btn-primary">
                                 Atualizar

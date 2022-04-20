@@ -11,7 +11,7 @@ urlpatterns = [
     # /contato/busca
     path('busca/', views.busca, name='busca'),
     # /contato/listar_contato
-    path('listar_contato', views.listar_contato, name='listar_contato'),
+    path('listar_contato/', views.listar_contato, name='listar_contato'),
     # /contatos/ver_contato
     path('ver_contato', views.listar_contato, name='ver_contato'),
     # /contatos/id

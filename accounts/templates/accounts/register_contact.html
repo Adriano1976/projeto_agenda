@@ -78,12 +78,23 @@
                                 </div>
                                 {% render_field form.descricao class+="form-control" placeholder="Anotações" %}
                             </div>
+                            <!-- Confirmar o cadastro do contato -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Ao deixar marcado a caixa ao lado, você está a confirmar
+                                        a criação de um novo contato cadastrado.
+                                    </span>
+                                    <br>
+                                </div>
+                                {% render_field form.mostrar class+="form-control" %}
+                            </div>
                             <hr>
                             <div class="text-right">
                                 <a href="{% url 'contatos:index' %}"
                                    class="btn btn-outline-primary">Voltar</a>
                                 <button type="submit" class="btn btn-primary">Salvar</button>
-                                <button  type="reset" class="btn btn-outline-primary">Limpar</button>
+                                <button type="reset" class="btn btn-outline-primary">Limpar</button>
                             </div>
                         </form>
                     </div>
