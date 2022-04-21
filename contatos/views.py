@@ -8,7 +8,7 @@ from django.contrib import messages
 from .models import Contato
 
 
-# Como exibir nome ao invez da Id na barra de endereços? ------------------------------------
+# Como exibir nome ao invez da Id na barra de endereços? -------------------------------------
 
 @login_required(redirect_field_name='login')
 def index(request):
