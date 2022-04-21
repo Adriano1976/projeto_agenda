@@ -10,35 +10,35 @@
 {% block conteudo %}
     <!-- Container -->
     <div class="container mt-5">
-        <div class="container mt-5">
-            <img src="{% static "img/titulo.png" %}"
-                 style="width:250px; margin-right: auto"
-                 alt="Minha Agenda">
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="content-wrapper col-lg-12">
+            <div class="content d-flex justify-content-center align-items-center">
                 <div class="card">
+                    <div class="text-center mb-3 ">
+                        <br>
+                        <img src="{% static "img/titulo.png" %}"
+                             style="width:250px; margin-right: auto"
+                             alt="Minha Agenda">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">FAZENDO LOGIN</h5>
+                        <hr class="margin: 30px 0">
+                        <h5 class="card-title content d-flex justify-content-center align-items-center">
+                            FAZENDO LOGIN
+                        </h5>
+                        <hr class="margin: 30px 0">
                         <p class="card-text">
-                            Olá usuário(a) Minha Agenda,
-                            <br>
-                            Por favor, insira a suas credenciais abaixo para acessar
-                            a sua conta de <code>Usuário</code>.
-                            <br>
-                            <br>
-                            Esse é seu primeiro acesso?
+                            Olá usuário(a) da Minha Agenda.</p>
+                        <p>Por favor, insira a suas credenciais para acessar
+                            a sua conta de <code>Usuário</code>.</p>
+                        <p>
+                            Seu primeiro acesso?
                             <a href="{% url 'accounts:register' %}">CLIQUE AQUI</a>
                         </p>
 
-                        <p>
-                            Esqueceu sua senha?
-                            <a href="{% url 'accounts:password_reset' %}">CLIQUE AQUI</a>
-                        </p>
-                        <hr>
+                        <hr class="margin: 30px 0">
 
-                        <h5 class="mt-3 mb-3">MINHAS CREDENCIAIS</h5>
+                        <h5 class="mt-3 mb-3 content d-flex justify-content-center align-items-center">
+                            MINHAS CREDENCIAIS
+                        </h5>
 
                         {% if not user.is_authenticated %}
                             <form method="POST" action="{% url 'accounts:login' %}">
@@ -63,7 +63,14 @@
                                     <input type="password" name="senha" class="form-control"
                                            placeholder="Insira sua senha">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Entrar</button>
+
+                                <div class="col-md-offset-6 text-center mt-3">
+                                    <button type="submit" class="btn btn-block btn-primary"
+                                            style="font-size: 15px; height: 60px; margin-bottom: 5px">
+                                        ENTRAR
+                                    </button>
+                                    <a href="{% url 'accounts:password_reset' %}">Esqueci minha senha</a>
+                                </div>
                             </form>
                         {% else %}
                             <P>

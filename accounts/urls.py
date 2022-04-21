@@ -15,7 +15,7 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     # /accounts/register/
     path('register/', views.register, name='register'),
-    # /accounts/dashboard/
+    # /accounts/dashboard/  <-
     path('dashboard/', views.dashboard, name='dashboard'),
 
     # GET /accounts/register_contatct/

@@ -6,10 +6,8 @@ from django.db.models import Q, Value
 from django.db.models.functions import Concat
 from django.contrib import messages
 from .models import Contato
-from django.contrib.auth.models import User
 
 
-# Create your views here.
 # Como exibir nome ao invez da Id na barra de endereços? ------------------------------------
 
 @login_required(redirect_field_name='login')
@@ -20,15 +18,17 @@ def index(request):
 @login_required(redirect_field_name='login')
 def listar_contato(request):
     contatos = Contato.objects.order_by('nome').filter(
-        mostrar=True
+        mostrar=True,
+        usuario=request.user
     )
-    paginator = Paginator(contatos, 20)
+
+    paginator = Paginator(contatos, 10)
 
     page = request.GET.get('p')
     contatos = paginator.get_page(page)
 
     return render(request, 'contatos/listar_contato.html', {
-        'contatos': contatos
+        'contatos': contatos,
     })
 
 

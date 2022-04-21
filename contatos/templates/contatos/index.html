@@ -8,24 +8,27 @@
 
 <!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
 {% block conteudo %}
-    <div class="container mt-5">
-
+    <!-- Container -->
+    <div class="text-center mb-3">
         <img src="{% static "img/titulo.png" %}"
              style="width:250px; margin-right: auto"
              alt="Minha Agenda">
     </div>
-
+    <br>
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Adicionar Contato</h5>
+                        <h5 class="card-title content d-flex justify-content-center align-items-center">
+                            Adicionar Contato
+                        </h5>
+                        <br>
                         <p class="card-text">
                             Cadastre aqui um novo <code>Contato</code>.
                         </p>
                         <a href="{% url 'accounts:register_contact' %}"
-                           class="btn btn-primary">
+                           class="btn btn-block btn-primary">
                             Novo Contato
                         </a>
                     </div>
@@ -35,12 +38,15 @@
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Lista de Contatos</h5>
+                        <h5 class="card-title content d-flex justify-content-center align-items-center">
+                            Lista de Contatos
+                        </h5>
+                        <br>
                         <p class="card-text">
                             Veja aqui uma lista de <code>Contatos</code>.
                         </p>
                         <a href="{% url 'contatos:listar_contato' %}"
-                           class="btn btn-primary">
+                           class="btn btn-block btn-primary">
                             Vá para Lista
                         </a>
                     </div>

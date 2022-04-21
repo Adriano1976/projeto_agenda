@@ -1,20 +1,31 @@
 <!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
 {% extends "base.html" %}
 
-{% load widget_tweaks %}
+{% load widget_tweaks static %}
 
 <!-- Bloco que define o <title>,/title> da nossa página --------------------------------->
 {% block titulo %}Atualização de Contato | {% endblock %}
 
 <!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
 {% block conteudo %}
+    <!-- Container -->
     <div class="container mt-5">
         {% include 'parciais/_messages.html' %}
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="content-wrapper col-lg-12">
+            <div class="content d-flex justify-content-center align-items-center">
                 <div class="card">
+                    <div class="text-center mb-3">
+                        <br>
+                        <img src="{% static "img/titulo.png" %}"
+                             style="width:250px; margin-right: auto"
+                             alt="Minha Agenda">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Atualização de Contato</h5>
+                        <hr class="margin: 30px 0">
+                        <h5 class="card-title content d-flex justify-content-center align-items-center">
+                            Atualização de Contato
+                        </h5>
+                        <hr class="margin: 30px 0">
                         <p class="card-text">
                             Olá usuáro(a) "{{ user }}".
                             Complete o formulário abaixo para atualizar
@@ -24,7 +35,7 @@
                             <!-- Não se esqueça dessa tag -->
                             {% csrf_token %}
 
-                            <!-- Nome -->
+                            <!-- Nome do contato -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Nome</span>
@@ -32,7 +43,7 @@
                                 {% render_field form.nome class+="form-control" %}
                             </div>
 
-                            <!-- Sobrenome -->
+                            <!-- Sobrenome do contato -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Sobrenome</span>
@@ -40,7 +51,7 @@
                                 {% render_field form.sobrenome class+="form-control" %}
                             </div>
 
-                            <!-- Telefone -->
+                            <!-- Telefone do contato -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Telefone</span>
@@ -48,7 +59,7 @@
                                 {% render_field form.telefone class+="form-control" %}
                             </div>
 
-                            <!-- E-mail -->
+                            <!-- E-mail do contato -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">E-mail</span>
@@ -56,32 +67,43 @@
                                 {% render_field form.email class+="form-control" %}
                             </div>
 
-                            <!-- Data de criação -->
+                            <!-- Data de criação do contato -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Data de Criação</span>
                                 </div>
                                 {% render_field form.data_criacao class+="form-control" %}
                             </div>
-                            <!-- Categoria -->
+                            <!-- Categoria do contato -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Categoria</span>
                                 </div>
                                 {% render_field form.categoria class+="form-control" %}
                             </div>
-                            <!-- Descrição -->
+                            <!-- Descrição do contato -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Nota</span>
                                 </div>
                                 {% render_field form.descricao class+="form-control" %}
                             </div>
+                            <!-- Confirmar o cadastro do contato -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Confirmar alterações
+                                    </span>
+                                    <br>
+                                </div>
+                                {% render_field form.mostrar class+="form-control" %}
+                            </div>
                             <hr>
                             <div class="text-right">
                                 <a href="{% url 'contatos:ver_contato' %}"
-                                   class="btn btn-outline-primary">Voltar</a>
-                                <button class="btn btn-primary">Salvar</button>
+                                   class="btn btn-block btn-outline-primary">Voltar</a>
+                                <button type="submit" class="btn btn-block btn-primary">Salvar</button>
+                                <button type="reset" class="btn btn-block btn-secondary">Limpar</button>
                             </div>
                         </form>
                     </div>

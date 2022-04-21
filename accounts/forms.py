@@ -1,4 +1,4 @@
-from contatos.models import Contato, Categoria
+from contatos.models import Contato
 from django import forms
 
 
@@ -6,28 +6,32 @@ from django import forms
 # -------------------------------------------
 
 class InsereContatoForm(forms.ModelForm):
+    class Meta:
+        model = Contato
+        exclude = ('usuario',)
+
+    def __init__(self, *args, **kwargs):
+        self.usuario = kwargs.pop('usuario')
+        super(InsereContatoForm, self).__init__(*args, **kwargs)
+
     chefe = forms.BooleanField(
         label='Chefe?',
-        required=False,
+        required=False
     )
-
     biografia = forms.CharField(
         label='Biografia',
         required=False,
         widget=forms.Textarea
     )
 
-    class Meta:
-        # Modelo base
-        model = Contato
-
-        # Campos que estarão no form
-        fields = [
-            'nome',
-            'sobrenome',
-            'telefone',
-            'email',
-            'data_criacao',
-            'descricao',
-            'categoria',
-        ]
+    # Campos que estarão no form
+    fields = [
+        'nome',
+        'sobrenome',
+        'telefone',
+        'email',
+        'data_criacao',
+        'descricao',
+        'categoria',
+        'mostrar',
+    ]
