@@ -57,11 +57,11 @@ def busca(request):
     if termo is None or not termo:
         # raise Http404()
         messages.add_message(request, messages.ERROR, 'Campo de busca não pode ficar vazio.')
-        return redirect('listar_contato')
+        return redirect('contatos:listar_contato')
 
     if int(len(contatos)) == 0:
         messages.add_message(request, messages.ERROR, 'Contato(s) não encontrado(s).')
-        return redirect('listar_contato')
+        return redirect('contatos:listar_contato')
 
     if int(len(contatos)) != 0:
         messages.add_message(request, messages.SUCCESS, 'Contato(s) localizado(s) com sucesso.')
