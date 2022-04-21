@@ -131,10 +131,12 @@ def dashboard(request):
 class ContatoCreateView(CreateView):
     template_name = "accounts/register_contact.html"
     model = Contato
+    user = User
     form_class = InsereContatoForm
     success_url = reverse_lazy("contatos:listar_contato")
 
     # Criando uma chave em kwargs para o usario que deverá ser "capturado" através do request.
+    @login_required(redirect_field_name='login')
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.usuario = self.request.user
@@ -152,10 +154,25 @@ class ContatoCreateView(CreateView):
 # ------------------------------------------------------------------------------------
 
 class ContatoUpdateView(UpdateView):
+    class Meta:
+        model = Contato
+        exclude = ('usuario',)
+
+    def __init__(self, *args, **kwargs):
+        super(ContatoUpdateView, self).__init__(*args, **kwargs)
+
     template_name = "accounts/update_contact.html"
     model = Contato
-    user = User
-    fields = '__all__'
+    fields = [
+        'nome',
+        'sobrenome',
+        'telefone',
+        'email',
+        'data_criacao',
+        'descricao',
+        'categoria',
+        'mostrar',
+    ]
     context_object_name = 'contato'
     success_url = reverse_lazy("contatos:listar_contato")
 

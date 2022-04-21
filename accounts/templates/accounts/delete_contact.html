@@ -1,46 +1,53 @@
 <!-- Extenção do arquivo 'base.html' que está na pasta contatos/templates/contatos/ ----->
 {% extends "base.html" %}
 
-{% load static %}
+{% load widget_tweaks static %}
 
 <!-- Bloco que define o <title></title> da nossa página -->
 {% block titulo %}Excluindo Contato | {% endblock %}
 
 <!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
 {% block conteudo %}
-    {% include 'parciais/_messages.html' %}
-
+    <!-- Container -->
     <div class="container mt-5">
-        <img src="{% static "img/titulo.png" %}"
-             style="width:250px; margin-right: auto"
-             alt="Minha Agenda">
-    </div>
-    <br>
-
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Exclusão de Contato</h5>
-
-                <p class="card-text">
-                    Olá usuáro(a) "{{ user }}".
-                    Você tem certeza que quer excluir o contato <b>{{ contato.nome }}</b>?
-                </p>
-
-                <form method="post">
-                    {% csrf_token %}
-
-                    <hr/>
-                    <br>
-
-                    <div class="text-right">
-                        <a href="{% url 'contatos:listar_contato' %}"
-                           class="btn btn-outline-danger">
-                            Cancelar
-                        </a>
-                        <button class="btn btn-danger">Excluir</button>
+        {% include 'parciais/_messages.html' %}
+        <div class="content-wrapper col-lg-12">
+            <div class="content d-flex justify-content-center align-items-center">
+                <div class="card">
+                    <div class="text-center mb-3">
+                        <br>
+                        <img src="{% static "img/titulo.png" %}"
+                             style="width:250px; margin-right: auto"
+                             alt="Minha Agenda">
                     </div>
-                </form>
+                    <div class="card-body">
+                        <hr class="margin: 30px 0">
+                        <h5 class="card-title content d-flex justify-content-center align-items-center">
+                            Exclusão de Contato
+                        </h5>
+                        <hr class="margin: 30px 0">
+                        <p class="card-text">
+                            Olá usuáro(a) "{{ user }}".
+                            Você tem certeza que quer excluir o contato <b>{{ contato.nome }}</b>?
+                        </p>
+
+                        <form method="post">
+                            {% csrf_token %}
+
+                            <hr/>
+                            <br>
+
+                            <div class="text-right">
+                                <a href="{% url 'contatos:listar_contato' %}"
+                                   class="btn btn-block btn-outline-danger">
+                                    Cancelar
+                                </a>
+                                <button class="btn btn-block btn-danger">Excluir</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

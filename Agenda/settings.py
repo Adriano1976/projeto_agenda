@@ -55,6 +55,7 @@ SERVER_EMAIL = "adrianosantos.git@hotmail.com"
 EMAIL_HOST_PASSWORD = "2510aS#@"
 
 SESSION_COOKIE_AGE = 900
+SESSION_SAVE_EVERY_REQUEST = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
