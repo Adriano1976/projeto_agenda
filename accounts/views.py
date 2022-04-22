@@ -191,9 +191,9 @@ class ContatoDeleteView(DeleteView):
 # ------------------------------------------------------------------------------------
 
 class UsuarioPasswordResetView(PasswordResetView):
-    email_template_name = 'registrations/password_reset_email.txt'
+    email_template_name = 'registrations/password_reset_email.html'
     form_class = PasswordResetForm
-    subject_template_name = 'registrations/password_reset_subject.txt'
+    subject_template_name = 'registrations/password_reset_subject'
     success_url = reverse_lazy('accounts:password_reset_done')
     template_name = 'registrations/password_reset_form.html'
     context_object_name = 'password_reset'

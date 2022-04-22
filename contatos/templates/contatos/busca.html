@@ -2,7 +2,8 @@
 
 {% load static %}
 
-<nav class="container">
-    {% block titulo %}{{ request.GET.termo }} Busca | {% endblock %}
-</nav>
-
+<div class="container mt-5">
+    <div class="row">
+        {% block titulo %}{{ request.GET.termo }} Busca | {% endblock %}
+    </div>
+</div>
