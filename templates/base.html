@@ -11,7 +11,14 @@
     {% include 'parciais/_head.html' %}
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/png" style="border-radius: 40%;">
+    <link style="mix-blend-mode: multiply; border-radius: 10px;" rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/png">
+    <style>
+        body {
+            background-image: url(https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,25 +32,26 @@
     {% include 'parciais/_messages.html' %}
     <div class="row">
         <div class="col-lg-12">
-            {% if 'accounts' not in request.path %}
-                <br><br>
-                <form method="get" action="{% url 'contatos:busca' %}">
-                    <div class="form-group row">
-                        <div class="col-12">
-                            <label for="search-input">
-                                <input class="form-control"
-                                       type="search" value="{{ request.GET.termo }}"
-                                       id="search-input"
-                                       placeholder="Digite sua pesquisa"
-                                       name="termo">
-                            </label>
-                            <img src="{% static "img/lupa.png" %}"
-                                 style="width:35px; margin-right: auto"
-                                 alt="Minha Agenda">
+            <div class="container mt-5">
+                {% if 'accounts' not in request.path %}
+                    <form method="get" action="{% url 'contatos:busca' %}">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <label for="search-input">
+                                    <input class="form-control"
+                                           type="search" value="{{ request.GET.termo }}"
+                                           id="search-input"
+                                           placeholder="Digite sua pesquisa"
+                                           name="termo">
+                                </label>
+                                <img src="{% static "img/lupa.png" %}"
+                                     style="width:35px; margin-right: auto; mix-blend-mode: multiply"
+                                     alt="Minha Agenda">
+                            </div>
                         </div>
-                    </div>
-                </form>
-            {% endif %}
+                    </form>
+                {% endif %}
+            </div>
             <!-- Importando conteúdo do arquivo 'index.html' da pasta contatos/templates/contatos/ -->
             {% block conteudo %} {% endblock %}
         </div>

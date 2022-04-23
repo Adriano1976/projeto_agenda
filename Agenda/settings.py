@@ -45,14 +45,12 @@ INSTALLED_APPS = [
 
 # Configurações de envio do e-mail
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.live.com'
-EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "adrianosantos.git@hotmail.com"
-DEFAULT_FROM_EMAIL = "adrianosantos.git@hotmail.com"
-SERVER_EMAIL = "adrianosantos.git@hotmail.com"
-EMAIL_HOST_PASSWORD = "2510aS#@"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "adrianosantos.git@gmail.com"
+EMAIL_HOST_PASSWORD = "2510asAS#@()"
 
 SESSION_COOKIE_AGE = 900
 SESSION_SAVE_EVERY_REQUEST = True
