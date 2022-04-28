@@ -8,109 +8,109 @@
 
 <!-- Bloco de conteúdo da extenção da pasta template/base.html -------------------------->
 {% block conteudo %}
-    <!-- Container -->
-    <div class="container mt-5">
-        {% include 'parciais/_messages.html' %}
-        <div class="content-wrapper">
-            <div class="content d-flex justify-content-center align-items-center">
-                <div class="card">
-                    <div class="text-center mb-3">
-                        <br>
-                        <img src="{% static "img/titulo.png" %}"
-                             style="width:250px; margin-right: auto; mix-blend-mode: multiply"
-                             alt="Minha Agenda">
-                    </div>
-                    <div class="card-body">
-                        <hr class="margin: 30px 0">
-                        <h5 class="card-title content d-flex justify-content-center align-items-center">
-                            Atualização de Contato
-                        </h5>
-                        <hr class="margin: 30px 0">
-                        <p class="card-text">
-                            Olá usuáro(a) "{{ user }}".
-                            Complete o formulário abaixo para atualizar
-                            uma atualização de <code>Contato</code>.
-                        </p>
-                        <form method="post">
-                            <!-- Não se esqueça dessa tag -->
-                            {% csrf_token %}
+<!-- Container -->
+<div class="container mt-5">
+    {% include 'parciais/_messages.html' %}
+    <div class="content-wrapper">
+        <div class="content d-flex justify-content-center align-items-center">
+            <div class="card">
+                <div class="text-center mb-3">
+                    <br>
+                    <img src="{% static " img/titulo.png" %}"
+                    style="width:250px; margin-right: auto; mix-blend-mode: multiply"
+                    alt="Minha Agenda">
+                </div>
+                <div class="card-body">
+                    <hr class="margin: 30px 0">
+                    <h5 class="card-title content d-flex justify-content-center align-items-center">
+                        Atualização de Contato
+                    </h5>
+                    <hr class="margin: 30px 0">
+                    <p class="card-text">
+                        Olá usuáro(a) "{{ user }}".
+                        Complete o formulário abaixo para atualizar
+                        uma atualização de <code>Contato</code>.
+                    </p>
+                    <form method="post">
+                        <!-- Não se esqueça dessa tag -->
+                        {% csrf_token %}
 
-                            <!-- Nome do contato -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Nome</span>
-                                </div>
-                                {% render_field form.nome class+="form-control" %}
+                        <!-- Nome do contato -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Nome</span>
                             </div>
+                            {% render_field form.nome class+="form-control" %}
+                        </div>
 
-                            <!-- Sobrenome do contato -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Sobrenome</span>
-                                </div>
-                                {% render_field form.sobrenome class+="form-control" %}
+                        <!-- Sobrenome do contato -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Sobrenome</span>
                             </div>
+                            {% render_field form.sobrenome class+="form-control" %}
+                        </div>
 
-                            <!-- Telefone do contato -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Telefone</span>
-                                </div>
-                                {% render_field form.telefone class+="form-control" %}
+                        <!-- Telefone do contato -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Telefone</span>
                             </div>
+                            {% render_field form.telefone class+="form-control" %}
+                        </div>
 
-                            <!-- E-mail do contato -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">E-mail</span>
-                                </div>
-                                {% render_field form.email class+="form-control" %}
+                        <!-- E-mail do contato -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">E-mail</span>
                             </div>
+                            {% render_field form.email class+="form-control" %}
+                        </div>
 
-                            <!-- Data de criação do contato -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Data de Criação</span>
-                                </div>
-                                {% render_field form.data_criacao class+="form-control" %}
+                        <!-- Data de criação do contato -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Data de Criação</span>
                             </div>
-                            <!-- Categoria do contato -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Categoria</span>
-                                </div>
-                                {% render_field form.categoria class+="form-control" %}
+                            {% render_field form.data_criacao class+="form-control" %}
+                        </div>
+                        <!-- Categoria do contato -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Categoria</span>
                             </div>
-                            <!-- Descrição do contato -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Nota</span>
-                                </div>
-                                {% render_field form.descricao class+="form-control" %}
+                            {% render_field form.categoria class+="form-control" %}
+                        </div>
+                        <!-- Descrição do contato -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Nota</span>
                             </div>
-                            <!-- Confirmar o cadastro do contato -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
+                            {% render_field form.descricao class+="form-control" %}
+                        </div>
+                        <!-- Confirmar o cadastro do contato -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                        Confirmar alterações
+                                        Confirmar suas alterações?
                                     </span>
-                                    <br>
-                                </div>
-                                {% render_field form.mostrar class+="form-control" %}
+                                <br>
                             </div>
-                            <hr>
-                            <div class="text-right">
-                                <a href="{% url 'contatos:ver_contato' %}"
-                                   class="btn btn-block btn-outline-primary">Voltar</a>
-                                <button type="submit" class="btn btn-block btn-primary">Salvar</button>
-                                <button type="reset" class="btn btn-block btn-secondary">Limpar</button>
-                            </div>
-                        </form>
-                    </div>
+                            {% render_field form.mostrar class+="form-control" type="checkbox" required="required" %}
+                        </div>
+                        <hr>
+                        <div class="text-right">
+                            <a href="{% url 'contatos:ver_contato' %}"
+                               class="btn btn-block btn-outline-primary">Voltar</a>
+                            <button type="submit" class="btn btn-block btn-primary">Salvar</button>
+                            <button type="reset" class="btn btn-block btn-secondary">Limpar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <br>
-    <br>
+</div>
+<br>
+<br>
 {% endblock %}

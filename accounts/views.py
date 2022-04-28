@@ -144,6 +144,7 @@ class ContatoCreateView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
     # Criando a chave usuario em kwargs
+    @login_required(redirect_field_name='login')
     def get_form_kwargs(self, *args, **kwargs):
         kwargs = super(ContatoCreateView, self).get_form_kwargs()
         kwargs['usuario'] = self.request.user
